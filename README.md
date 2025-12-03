@@ -9,11 +9,11 @@ bybit
 okx 
     futures mapping
     spot mapping
-    
+    latency
 mexc 
     2-3 sec latency
     spot ok
     mexc mapping needeed 
 bingx
     all mapping
-    latenc
+    latency
