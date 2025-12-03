@@ -101,18 +101,16 @@ def process_bookticker_message(
     if isinstance(msg, dict) and "result" in msg:
         return None
 
+    # Некоторые сообщения могут приходить как объект, а не как список
     data = msg
 
-    # Ожидаемый формат:
+    # Формат spot/futures bookTicker:
     # {
     #   "s": "BTCUSDT",
     #   "b": "123.45",
     #   "a": "123.46",
     #   ...
     # }
-    if not isinstance(data, dict):
-        return None
-
     symbol = data.get("s")
     bid = data.get("b")
     ask = data.get("a")
@@ -121,7 +119,7 @@ def process_bookticker_message(
         # Не bookTicker или странный формат — пропускаем
         return None
 
-    # Локальный timestamp (мс)
+    # Локный timestamp (мс)
     ts_ms = int(time.time() * 1000)
 
     line = f"BINANCE,{market_type},{symbol},{bid},{ask},{ts_ms}"
@@ -168,22 +166,15 @@ async def run_ws_connection(
                 print(f"[{name}] Ожидаем сообщения bookTicker...")
 
                 async for raw_msg in ws:
-                    # ВАЖНО: websockets может вернуть str или bytes.
-                    if isinstance(raw_msg, (bytes, bytearray)):
-                        try:
-                            raw_msg = raw_msg.decode("utf-8", "ignore")
-                        except Exception:
-                            # Если не удалось декодировать — пропускаем сообщение
-                            continue
-
-                    # Тут raw_msg уже точно str
                     line = process_bookticker_message(raw_msg, market_type)
                     if line is None:
                         continue
-                    # Минимальная работа на тик: просто выводим строку
+                    # Здесь минимальная работа: просто печатаем строку
+                    # В реальном проекте можно отправлять в очередь/локальный TCP и т.д.
                     print(line)
 
         except asyncio.CancelledError:
+            # Корректное завершение таска
             print(f"[{name}] Task cancelled, выходим.")
             return
         except Exception as e:
@@ -230,7 +221,7 @@ async def main():
         )
     )
 
-    # Ждём все три таска (они по факту вечные)
+    # Ждем все три таска (они по факту вечные)
     await asyncio.gather(futures_task, spot_task_1, spot_task_2)
 
 
