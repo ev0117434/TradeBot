@@ -15,8 +15,8 @@ SPOT_URL = "wss://stream.binance.com:9443/ws"
 FUTURES_URL = "wss://fstream.binance.com/ws"
 
 # Файлы со списками пар (по одной в строке: BTCUSDT, ETHUSDT, ...)
-SPOT_SYMBOLS_FILE = "binance_spot_all.txt"
-FUTURES_SYMBOLS_FILE = "binance_futures_all.txt"
+SPOT_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/binance_spot_all.txt"
+FUTURES_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/binance_futures_all.txt"
 
 # Максимум символов в одном SUBSCRIBE-сообщении
 BATCH_SIZE = 300

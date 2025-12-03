@@ -13,11 +13,11 @@ OKX_WS_URL = "wss://ws.okx.com:8443/ws/v5/public"
 # файлы со списками инструментов (по одному в строке, без пробелов):
 #   BTC-USDT
 #   ETH-USDT
-SPOT_SYMBOLS_FILE = "okx_spot_all.txt"
+SPOT_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/okx_spot_all.txt"
 
 #   BTC-USDT-SWAP
 #   ETH-USDT-SWAP
-FUTURES_SYMBOLS_FILE = "okx_futures_all.txt"
+FUTURES_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/okx_futures_all.txt"
 
 # размер батча для одного subscribe (примерно 150–200 символов)
 BATCH_SIZE = 200

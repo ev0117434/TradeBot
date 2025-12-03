@@ -9,8 +9,8 @@ import websockets  # pip install websockets
 SPOT_WS_URL = "wss://wbs-api.mexc.com/ws"
 FUTURES_WS_URL = "wss://contract.mexc.com/edge"
 
-SPOT_SYMBOLS_FILE = "mexc_spot_all.txt"       # 2059 пар, по одной в строке: BTCUSDT
-FUTURES_SYMBOLS_FILE = "mexc_futures_all.txt" # 826 контрактов: BTC_USDT
+SPOT_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/mexc_spot_all.txt"       # 2059 пар, по одной в строке: BTCUSDT
+FUTURES_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/mexc_futures_all.txt" # 826 контрактов: BTC_USDT
 
 SPOT_TIMEZONE = "UTC+3"  # для miniTickers, влияет только на % изменения, не на цену
 

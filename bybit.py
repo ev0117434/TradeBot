@@ -15,8 +15,8 @@ FUTURES_WS_URL = "wss://stream.bybit.com/v5/public/linear"
 # Если у тебя аккаунт TR/KZ/Georgia — здесь надо сменить домен на stream.bybit-tr.com / stream.bybit.kz / stream.bybitgeorgia.ge
 # см. доку: Connect. :contentReference[oaicite:7]{index=7}
 
-SPOT_SYMBOLS_FILE = "bybit_spot_all.txt"
-FUTURES_SYMBOLS_FILE = "bybit_futures_all.txt"
+SPOT_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/bybit_spot_all.txt"
+FUTURES_SYMBOLS_FILE = "dif type of pairs/actually all pomenshe/bybit_futures_all.txt"
 
 # Лимиты из документации:
 # - Spot: не более 10 args в одном запросе subscribe
