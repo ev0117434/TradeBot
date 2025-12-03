@@ -191,9 +191,11 @@ async def run_single_connection(
 
                     symbol, bid, ask, ts = parsed
 
-                    # Формат вывода: [биржа, рынок, символ, bid, ask, ts]
-                    # Можно заменить print на запись в файл / TCP позже.
-                    print(f"[{EXCHANGE_NAME}, {market}, {symbol}, {bid}, {ask}, {ts}]")
+                    # Модификация символа: убрать тире и SWAP
+                    symbol = symbol.replace('-SWAP', '').replace('SWAP', '').replace('-', '')
+
+                    # Формат вывода: без скобок, кавычек, через запятые
+                    print(f"{EXCHANGE_NAME}, {market}, {symbol}, {bid}, {ask}, {ts}")
 
         except Exception as e:
             print(f"[{EXCHANGE_NAME}][{market}][conn={conn_id}] error: {e!r}, reconnect in 3s")
