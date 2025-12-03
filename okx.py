@@ -149,13 +149,14 @@ async def handle_okx_stream(url: str, symbols: list, market_type: str):
                         if not inst_id or bid is None or ask is None:
                             continue
 
-                        # единый формат:
-                        # [биржа, рынок, символ, bid, ask, ts]
-                        out = ["OKX", market_type, inst_id, bid, ask, ts]
+                        # Очистка символа: удаляем тире и -SWAP для фьючерсов
+                        cleaned_inst_id = inst_id.replace("-", "").replace("SWAP", "")
 
-                        # здесь только print -> минимум задержек и блокировок
-                        # дальше можно уже парсить этот вывод другим скриптом
-                        print(json.dumps(out, ensure_ascii=False))
+                        # Формируем строку вывода с запятыми
+                        out = f"OKX,{market_type},{cleaned_inst_id},{bid},{ask},{ts}"
+
+                        # Вывод строки
+                        print(out)
 
         except Exception as e:
             # при любой ошибке – короткий лог и реконнект
